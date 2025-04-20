@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pergunta séria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: #111;
+        color: white;
+        font-family: "Segoe UI", sans-serif;
+        text-align: center;
+        padding-top: 80px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+      }
+
+      .btn {
+        padding: 15px 25px;
+        font-size: 1em;
+        border: none;
+        border-radius: 8px;
+        margin: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .yes {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .no {
+        background-color: #e74c3c;
+        color: white;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The Walking Dead é uma série ruim?</h1>
+    <button
+      class="btn yes"
+      onclick="alert('Sabia que você era inteligente! 😎')"
+    >
+      Sim
+    </button>
+    <button class="btn no" id="noBtn">Não</button>
+
+    <script>
+      const noBtn = document.getElementById("noBtn");
+      let attempts = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        const rect = noBtn.getBoundingClientRect();
+        const distance = Math.hypot(
+          e.clientX - (rect.left + rect.width / 2),
+          e.clientY - (rect.top + rect.height / 2)
+        );
+        if (distance < 100) {
+          const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+          const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+          noBtn.style.left = `${x}px`;
+          noBtn.style.top = `${y}px`;
+        }
+      });
+    </script>
+  </body>
+</html>
